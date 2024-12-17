@@ -5,6 +5,7 @@ abstract MedPrescLexicon = {
         UntMeasurement ;
         UntFrequency ;
         UntDuration ;
+        Value ;
     fun
         Tablet : Form ;
         Drop : Form ;
@@ -20,4 +21,14 @@ abstract MedPrescLexicon = {
 
         Hour : UntFrequency ;
         Day : UntDuration ;
+
+        One : Value ;
+        Two : Value ;
+        Three : Value ;
+        Four : Value ;
+        Five : Value ;
+        Six : Value ;
+        Seven: Value ;
+        Eight : Value ;
+        Nine : Value ;
 }

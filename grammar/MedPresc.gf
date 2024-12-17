@@ -12,8 +12,8 @@ abstract MedPresc =
     fun
         MedicalPrescription : Dosage -> Medicine -> Frequency -> Duration -> Prescription ;
         CompMedicine : MedName -> Strength -> Medicine ;
-        DosageForm : Int -> Form -> Dosage ;
-        MedStrength : Int -> UntMeasurement -> Strength ;
-        MedFreq : Int -> UntFrequency -> Frequency ;
-        MedDur : Int -> UntDuration -> Duration ;
+        DosageForm : Value -> Form -> Dosage ;
+        MedStrength : Value -> UntMeasurement -> Strength ;
+        MedFreq : Value -> UntFrequency -> Frequency ;
+        MedDur : Value -> UntDuration -> Duration ;
 }

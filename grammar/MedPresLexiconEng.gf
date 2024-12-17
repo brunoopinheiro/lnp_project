@@ -11,6 +11,7 @@ in {
         UntMeasurement = Noun ;
         UntFrequency = Noun ;
         UntDuration = Noun ;
+        Value = { s: Str ; n : Number } ;
     oper
         Noun : Type = { s : Number => Str } ;
 
@@ -48,4 +49,14 @@ in {
 
         Hour = mkN "hour" ;
         Day = mkN "day" ;
+
+        One = { s = "1" ; n = Sg } ;
+        Two = { s = "2" ; n = Pl } ;
+        Three = { s = "3" ; n = Pl } ;
+        Four = { s = "4" ; n = Pl } ;
+        Five = { s = "5" ; n = Pl } ;
+        Six = { s = "6" ; n = Pl } ;
+        Seven = { s = "7" ; n = Pl } ;
+        Eight = { s = "8" ; n = Pl } ;
+        Nine = { s = "9" ; n = Pl } ;
 }

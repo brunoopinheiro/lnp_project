@@ -11,15 +11,13 @@ in {
         Duration = { s : Str ; n : Number } ;
         Strength = { s : Str ; n : Number } ;
     oper
-        compose : Int -> { s: Number => Str } -> { s: Str ; n : Number } = \qnt, cn -> case qnt of {
-            1 => { s = ss qnt ++ cn.s ! Sg ; n = Sg } ;
-            _ => { s = ss qnt ++ cn.s ! Pl ; n = Pl }
-        } ;
+        compose : Value -> { s: Number => Str } -> { s : Str ; n : Number } = 
+        \qnt, cn -> { s = qnt.s ++ cn.s ! qnt.n ; n = qnt.n } ;
 
     lin
         MedicalPrescription dosage med freq dur = ss (dosage.s ++ "of" ++ med.s ++ "every" ++ freq.s ++ "for" ++ dur.s) ;
         DosageForm qnt form = compose qnt form ;
-        CompMedicine medName strength = { s = medName.s ! strength.n ++ strength.s ; n = strength.n } ;
+        CompMedicine medName strength = { s = (medName.s ! strength.n) ++ strength.s ; n = strength.n } ;
         MedStrength qnt und = compose qnt und ;
         MedFreq qnt und = compose qnt und ;
         MedDur qnt und = compose qnt und ;
