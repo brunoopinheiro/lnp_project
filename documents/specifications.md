@@ -12,7 +12,7 @@ Those points were considered when designing the controlled vocabulary for the pr
 
 ## Definitions
 - **Prescription**: A health-care program implemented by a physician or other qualified health care practitioner in the form of instructions that govern the plan of care for an individual patient. It should be presented in the following format:
-    - `quantity` `dosage form` of `medicine`  `frequency` `duration`.
+    - `quantity` `dosage form` of `medicine` every `frequency` for `duration`.
     - Example: 1 tablet of Aspirin 100 mg orally every 6 hours for 7 days.
 - **Quantity**: The amount of medication to be taken. Should be written in numbers.
 - **Dosage form**: The form in which the medication is presented. In this controlled vocabulary, it is accepted one of the following:
@@ -36,9 +36,9 @@ TODO
 **WARNING!** The following examples are not real prescriptions. They are just examples to illustrate the controlled vocabulary.
 
 - 1 tablet of Aspirin 100 mg every 6 hours for 7 days.
-- 1 tablet of Zofran 4 mg every 6 hours as needed for nausea for 3 days.
+- 2 tablets of Zofran 4 mg every 6 hours for 3 days.
 - 1 tablet of Vasotec 5 mg every 12 hours for 30 days.
-- 1 drop of Timoptic 0.5 mg every 12 hours for 30 days.
+- 1 drop of Timoptic 1 g every 12 hours for 30 days.
 
 
 ## References

@@ -14,8 +14,6 @@ class Prescriptor:
         return med_name
 
     def parse_value(self, value) -> str:
-        if len(value) == 1:
-            return value
         parser = {
             '1': 'One', '2': 'Two', '3': 'Three', '4': 'Four', '5': 'Five',
             '6': 'Six', '7': 'Seven', '8': 'Eight', '9': 'Nine',
@@ -38,7 +36,7 @@ class Prescriptor:
         unt_meas = 'Milligram'
         is_grams = input('Milligrams / Grams [mg/g]: ')
         if is_grams[0].lower() == 'g':
-            unt_meas = 'Grams'
+            unt_meas = 'Gram'
         return value, unt_meas
 
     def get_med_freq(self):
