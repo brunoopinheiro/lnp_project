@@ -6,28 +6,46 @@ in {
         Number = Sg | Pl ;
 
     lincat
-        MedName, Form, UntMeasurement, UntFrequency = { s: Str ; n : Number } ;
-
+        Form = Noun ;
+        MedName = Noun ;
+        UntMeasurement = Noun ;
+        UntFrequency = Noun ;
+        UntDuration = Noun ;
     oper
-        irregPlural : Str -> Str -> { s : Number => Str } =
-        \man, men -> { s = table { Sg => man ; Pl => men } } ;
+        Noun : Type = { s : Number => Str } ;
 
-        regPlural : Str -> { s : Number => Str } =
-        \car -> irregPlural car (car + "s") ;
+        mkNoun : Str -> Str -> Noun =
+        \x, y -> { s = table { Sg => x ; Pl => y } } ;
+
+        regNoun : Str -> Noun =
+        \w -> let ws : Str = case w of {
+            _ + ("a" | "e" | "i" | "o") + "o" => w + "s" ;
+            _ + ("s" | "x" | "sh" | "o")      => w + "es" ;
+            _ + "z"                           => w + "zes" ;
+            _ + ("a" | "e" | "o" | "u") + "y" => w + "s" ;
+            x + "y"                           => w + "ies" ;
+            _                                 => w + "s"
+        }
+        in mkNoun w ws ;
+
+        mkN = overload {
+            mkN : ( dog: Str ) -> Noun = regNoun ;
+            mkN : ( mouse, mice : Str ) -> Noun = mkNoun ;
+        } ;
 
     lin
-        Tablet = regPlural "tablet" ;
-        Drop = regPlural "drop" ;
-        Pill = regPlural "pill" ;
+        Tablet = mkN "tablet" ;
+        Drop = mkN "drop" ;
+        Pill = mkN "pill" ;
 
-        Aspirin = irregPlural "aspirin" "aspirin" ;
-        Zofran = irregPlural "zofran" "zofran" ;
-        Vasotec = irregPlural "vasotec" "vasotec" ;
-        Timoptic = irregPlural "timoptic" "timoptic" ;
+        Aspirin = mkN "aspirin" "aspirin" ;
+        Zofran = mkN "zofran" "zofran" ;
+        Vasotec = mkN "vasotec" "vasotec" ;
+        Timoptic = mkN "timoptic" "timoptic" ;
 
-        Milligram = regPlural "milligram" ;
-        Gram = regPlural "gram" ;
+        Milligram = mkN "mg" ;
+        Gram = mkN "g" ;
 
-        Hour = regPlural "hour" ;
-        Day = regPlural "day" ;
+        Hour = mkN "hour" ;
+        Day = mkN "day" ;
 }

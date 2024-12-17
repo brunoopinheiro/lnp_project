@@ -5,28 +5,22 @@ concrete MedPrescEng of MedPresc =
 in {
     lincat
         Prescription = SS ;
-        Quantity = Int ;
-        Dosage = Form ;
-        Medicine = SS ;
-        Frequency = SS ;
-        Unit = Int ;
-        Duration = SS ;
-        Strength = SS ;
-
+        Dosage = { s : Str ; n : Number } ;
+        Medicine = { s : Str ; n : Number } ;
+        Frequency = { s : Str ; n : Number } ;
+        Duration = { s : Str ; n : Number } ;
+        Strength = { s : Str ; n : Number } ;
     oper
-        apl : Int -> Str -> { s: Number => Str } -> { s: Str ; n : Number } = \qnt, dos, cn -> case qnt of {
-            1 => { s = "1" ++ dos ++ cn.s ; n = Sg } ;
-            _ => { s = show qnt ++ dos ++ cn.s ; n = Pl }
-        }
+        compose : Int -> { s: Number => Str } -> { s: Str ; n : Number } = \qnt, cn -> case qnt of {
+            1 => { s = ss qnt ++ cn.s ! Sg ; n = Sg } ;
+            _ => { s = ss qnt ++ cn.s ! Pl ; n = Pl }
+        } ;
 
     lin
-        -- MedicalPrescription qnt dos med freq dur = ss (qnt ++ dos ++ "of" ++ med ++ "every" ++ freq ++ "for" ++ dur) ;
-        MedicalPrescription qnt med = ss (apl (qnt "of" med)) ;
-        -- Qtt n = n ;
-        -- DosageForm qnt form = ss (qnt ++ form) ;
-        -- MedStrength value measure = ss (value ++ measure) ;
-        -- MedName name = ss name ;
-        -- CompMedicine name strength = ss (name ++ strength) ;
-        -- MedFreq n unit = ss (n ++ unit) ;
-        -- MedDur n unit = ss (n ++ unit) ;
+        MedicalPrescription dosage med freq dur = ss (dosage.s ++ "of" ++ med.s ++ "every" ++ freq.s ++ "for" ++ dur.s) ;
+        DosageForm qnt form = compose qnt form ;
+        CompMedicine medName strength = { s = medName.s ! strength.n ++ strength.s ; n = strength.n } ;
+        MedStrength qnt und = compose qnt und ;
+        MedFreq qnt und = compose qnt und ;
+        MedDur qnt und = compose qnt und ;
 }

@@ -4,6 +4,7 @@ abstract MedPrescLexicon = {
         MedName ;
         UntMeasurement ;
         UntFrequency ;
+        UntDuration ;
     fun
         Tablet : Form ;
         Drop : Form ;
@@ -18,5 +19,5 @@ abstract MedPrescLexicon = {
         Gram : UntMeasurement ;
 
         Hour : UntFrequency ;
-        Day : UntFrequency ;
+        Day : UntDuration ;
 }
