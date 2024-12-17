@@ -44,8 +44,8 @@ in {
         Vasotec = mkN "vasotec" "vasotec" ;
         Timoptic = mkN "timoptic" "timoptic" ;
 
-        Milligram = mkN "mg" ;
-        Gram = mkN "g" ;
+        Milligram = mkN "mg" "mg" ;
+        Gram = mkN "g" "g" ;
 
         Hour = mkN "hour" ;
         Day = mkN "day" ;
